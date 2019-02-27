@@ -10,16 +10,20 @@ public class ResultFormatter {
     public String format(ConstituencyResult constituencyResult) {
         var voteList = constituencyResult.voteList();
         int totalVotes = calcTotalVotes(voteList);
-        var joiner = new StringJoiner(" || ")
-            .add(constituencyResult.constituencyName());
 
-        voteList.stream()
-                .forEach(vote -> {
+        return new StringJoiner(" || ")
+            .add(constituencyResult.constituencyName())
+            .add(formatVoteList(voteList, totalVotes))
+            .toString();
+    }
+
+    private String formatVoteList(List<VoteEntry> voteList, int totalVotes) {
+        StringJoiner joiner = new StringJoiner(" || ");
+        voteList.forEach(vote -> {
                     String partyName = vote.party.displayName();
                     String votePercentage = getVotePercentage(vote.numVotes, totalVotes);
                     joiner.add(partyName + " | " + votePercentage);
                 });
-
         return joiner.toString();
     }
 
