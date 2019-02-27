@@ -1,9 +1,6 @@
 package election.formatter;
 
-import election.entities.Constituency;
-import election.entities.ConstituencyResult;
-import election.entities.Party;
-import election.entities.VoteList;
+import election.entities.*;
 import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -32,16 +29,16 @@ class ReportFormatterShould {
 
     private List<ConstituencyResult> someResults() {
         return asList(
-                result("Thanet South", Map.of(UKIP, 1500)),
-                result("Witney", Map.of(CONSERVATIVES, 2000)),
-                result("Islington North", Map.of(LABOUR, 1300))
+                result("Thanet South", UKIP, 1500),
+                result("Witney", CONSERVATIVES, 2000),
+                result("Islington North", LABOUR, 1300)
         );
     }
 
-    private ConstituencyResult result(String constituencyName, Map<Party, Integer> rawVotes) {
+    private ConstituencyResult result(String constituencyName, Party party, int numVotes) {
         return new ConstituencyResult(
                 new Constituency(constituencyName),
-                new VoteList(rawVotes)
+                new VoteList(asList(new VoteEntry(party, numVotes)))
         );
     }
 

@@ -1,6 +1,6 @@
 package election.entities;
 
-import java.util.Map;
+import java.util.List;
 import java.util.Objects;
 
 public class ConstituencyResult {
@@ -11,7 +11,7 @@ public class ConstituencyResult {
         return constituency.name();
     }
 
-    public Map<Party, Integer> voteList() {
+    public List<VoteEntry> voteList() {
         return votes.entries();
     }
 

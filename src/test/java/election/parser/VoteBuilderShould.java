@@ -1,14 +1,13 @@
 package election.parser;
 
-import election.entities.Party;
+import election.entities.VoteEntry;
 import election.entities.VoteList;
-import election.helpers.Parties;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
-import static election.helpers.Parties.*;
+import static election.helpers.Parties.CONSERVATIVES;
+import static election.helpers.Parties.LABOUR;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,11 +21,10 @@ class VoteBuilderShould {
                 "9389", "C"
         );
 
-        Map<Party, Integer> voteMap = Map.of(
-                LABOUR, 22547,
-                CONSERVATIVES, 9389
-        );
-        VoteList expectedVoteList = new VoteList(voteMap);
+        VoteList expectedVoteList = new VoteList(asList(
+                new VoteEntry(LABOUR, 22547),
+                new VoteEntry(CONSERVATIVES, 9389)
+        ));
 
         assertThat(new VoteBuilder(new InMemoryPartyRepository()).build(tokens), is(expectedVoteList));
     }

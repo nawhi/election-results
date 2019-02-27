@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
 import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -55,6 +56,6 @@ class ElectionReportShould {
     private List<ConstituencyResult> aResult() {
         return asList(new ConstituencyResult(
                 new Constituency("whatever"),
-                new VoteList(emptyMap())));
+                new VoteList(emptyList())));
     }
 }

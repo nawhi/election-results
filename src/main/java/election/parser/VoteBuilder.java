@@ -1,11 +1,10 @@
 package election.parser;
 
-import election.entities.Party;
+import election.entities.VoteEntry;
 import election.entities.VoteList;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class VoteBuilder {
 
@@ -16,11 +15,11 @@ public class VoteBuilder {
     }
 
     VoteList build(List<String> tokens) {
-        Map<Party, Integer> rawVotes = new HashMap<>();
+        List<VoteEntry> rawVotes = new ArrayList<>();
         for (int i = 0; i < tokens.size() - 1; i += 2) {
             String count = tokens.get(i);
             String partyId = tokens.get(i+1);
-            rawVotes.put(partyRepository.getById(partyId), Integer.parseInt(count));
+            rawVotes.add(new VoteEntry(partyRepository.getById(partyId), Integer.parseInt(count)));
         }
         return new VoteList(rawVotes);
     }

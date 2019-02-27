@@ -1,18 +1,16 @@
 package election.entities;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class VoteList {
-    private final Map<Party, Integer> entries;
+    private final List<VoteEntry> entries;
 
-    public VoteList(Map<Party, Integer> entries) {
-        this.entries = new HashMap<>(entries);
+    public VoteList(List<VoteEntry> entries) {
+        this.entries = entries;
     }
 
-    Map<Party, Integer> entries() {
-        return new HashMap<>(entries);
+    List<VoteEntry> entries() {
+        return new ArrayList<>(entries);
     }
 
     @Override
