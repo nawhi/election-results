@@ -5,6 +5,7 @@ import election.entities.ConstituencyResult;
 import election.entities.VoteList;
 import election.formatter.ReportFormatter;
 import election.parser.FileParser;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -17,15 +18,20 @@ import static org.mockito.Mockito.*;
 
 class ElectionReportShould {
 
+    private ReportFormatter formatter;
+    private FileParser parser;
+    private String filename;
+
+    @BeforeEach
+    void setUp() {
+        formatter = mock(ReportFormatter.class);
+        parser = mock(FileParser.class);
+        filename = "whatever";
+    }
+
     @Test
     void get_file_parsed_into_standard_format() {
-        String filename = "name/doesn't/matter/here";
-        FileParser parser = mock(FileParser.class);
-
-        var formatter = mock(ReportFormatter.class);
-
         new ElectionReport(filename, parser, formatter).generate();
-
         verify(parser).parse(filename);
     }
 
@@ -35,18 +41,15 @@ class ElectionReportShould {
 
         List<ConstituencyResult> result = aResult();
 
-        FileParser parser = mock(FileParser.class);
-        when(parser.parse("whatever")).thenReturn(result);
-
-        ReportFormatter formatter = mock(ReportFormatter.class);
+        when(parser.parse(filename)).thenReturn(result);
         when(formatter.format(result)).thenReturn(expectedReport);
 
-        String actualReport = new ElectionReport("whatever", parser, formatter).generate();
+        ElectionReport report = new ElectionReport("whatever", parser, formatter);
+        String actualReport = report.generate();
 
+        verify(parser).parse(filename);
         verify(formatter).format(result);
         assertThat(actualReport, is(expectedReport));
-
-
     }
 
     private List<ConstituencyResult> aResult() {
