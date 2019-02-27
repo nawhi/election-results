@@ -27,6 +27,6 @@ class VoteBuilderShould {
         );
         VoteList expectedVoteList = new VoteList(voteMap);
 
-        assertThat(new VoteBuilder().build(tokens), is(expectedVoteList));
+        assertThat(new VoteBuilder(new InMemoryPartyRepository()).build(tokens), is(expectedVoteList));
     }
 }

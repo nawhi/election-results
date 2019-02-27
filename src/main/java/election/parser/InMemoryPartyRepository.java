@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * NB: in a real application this might be read from a database
  */
-class PartyFromId {
+public class InMemoryPartyRepository implements PartyRepository {
 
     private static final Map<String, Party> PARTIES = Map.of(
             "L", new Party("L", "Labour"),
@@ -19,7 +19,8 @@ class PartyFromId {
             "SNP", new Party("SNP", "SNP")
     );
 
-    Party convert(String id) {
+    @Override
+    public Party getById(String id) {
         return PARTIES.get(id);
     }
 }
