@@ -1,13 +1,14 @@
 package election.entities;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class VoteList {
-    private Map<Party, Integer> entries;
+    private final Map<Party, Integer> entries;
 
     public VoteList(Map<Party, Integer> entries) {
-        this.entries = entries;
+        this.entries = new HashMap<>(entries);
     }
 
     @Override
