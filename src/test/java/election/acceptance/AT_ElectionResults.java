@@ -4,6 +4,7 @@ import election.ElectionReport;
 import election.parser.ConstituencyResultParser;
 import election.parser.FileParser;
 import election.parser.LineReader;
+import election.parser.VoteBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -18,7 +19,7 @@ class AT_ElectionResults {
 
     @Test
     void transforms_raw_data_into_formatted_results() {
-        ElectionReport report = new ElectionReport(RAW_DATA_ABS_PATH, new FileParser(new LineReader(), new ConstituencyResultParser()));
+        ElectionReport report = new ElectionReport(RAW_DATA_ABS_PATH, new FileParser(new LineReader(), new ConstituencyResultParser(new VoteBuilder())));
         String data = report.generate();
         assertThat(data, is(FORMATTED_DATA));
     }
