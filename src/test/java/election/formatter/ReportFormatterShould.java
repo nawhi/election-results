@@ -1,12 +1,10 @@
 package election.formatter;
 
 import election.entities.*;
-import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import static election.helpers.Parties.*;
 import static java.util.Arrays.asList;
@@ -38,7 +36,7 @@ class ReportFormatterShould {
     private ConstituencyResult result(String constituencyName, Party party, int numVotes) {
         return new ConstituencyResult(
                 new Constituency(constituencyName),
-                new VoteList(asList(new VoteEntry(party, numVotes)))
+                new VoteList(Collections.singletonList(new VoteEntry(party, numVotes)))
         );
     }
 

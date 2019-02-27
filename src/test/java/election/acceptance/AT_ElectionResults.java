@@ -1,7 +1,6 @@
 package election.acceptance;
 
 import election.ElectionReport;
-import election.parser.*;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;

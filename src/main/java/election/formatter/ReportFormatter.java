@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReportFormatter {
-    private ResultFormatter resultFormatter;
+    private final ResultFormatter resultFormatter;
 
     public ReportFormatter(election.formatter.ResultFormatter resultFormatter) {
         this.resultFormatter = resultFormatter;

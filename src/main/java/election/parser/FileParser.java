@@ -1,10 +1,8 @@
 package election.parser;
 
-import election.entities.Constituency;
 import election.entities.ConstituencyResult;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 

@@ -3,7 +3,7 @@ package election.parser;
 import election.entities.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
+import java.util.Collections;
 
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
@@ -16,7 +16,7 @@ class ConstituencyResultParserShould {
     void assemble_a_result_object_for_a_constituency() {
         var line = "Witney, 100, C";
         var party = new Party("C", "Conservative");
-        var votes = new VoteList(asList(new VoteEntry(party, 100)));
+        var votes = new VoteList(Collections.singletonList(new VoteEntry(party, 100)));
         var expectedResult = new ConstituencyResult(new Constituency("Witney"), votes);
 
         var voteBuilder = mock(VoteBuilder.class);

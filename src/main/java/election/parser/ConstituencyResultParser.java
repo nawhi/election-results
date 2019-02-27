@@ -10,7 +10,7 @@ import static java.util.stream.Collectors.toList;
 
 public class ConstituencyResultParser {
 
-    private VoteBuilder voteBuilder;
+    private final VoteBuilder voteBuilder;
 
     public ConstituencyResultParser(VoteBuilder voteBuilder) {
         this.voteBuilder = voteBuilder;

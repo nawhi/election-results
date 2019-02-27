@@ -8,11 +8,11 @@ import election.parser.FileParser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static java.util.Collections.emptyList;
-import static java.util.Collections.emptyMap;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
@@ -54,7 +54,7 @@ class ElectionReportShould {
     }
 
     private List<ConstituencyResult> aResult() {
-        return asList(new ConstituencyResult(
+        return Collections.singletonList(new ConstituencyResult(
                 new Constituency("whatever"),
                 new VoteList(emptyList())));
     }

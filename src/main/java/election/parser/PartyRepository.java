@@ -2,6 +2,6 @@ package election.parser;
 
 import election.entities.Party;
 
-public interface PartyRepository {
+interface PartyRepository {
     Party getById(String id);
 }

@@ -3,8 +3,8 @@ package election.entities;
 import java.util.Objects;
 
 public class Party {
-    private String id;
-    private String displayName;
+    private final String id;
+    private final String displayName;
 
     public Party(String id, String displayName) {
         this.id = id;

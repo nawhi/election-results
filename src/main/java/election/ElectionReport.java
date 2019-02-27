@@ -5,9 +5,9 @@ import election.formatter.ReportFormatter;
 import election.parser.*;
 
 public class ElectionReport {
-    private String rawDataFile;
-    private FileParser parser;
-    private ReportFormatter formatter;
+    private final String rawDataFile;
+    private final FileParser parser;
+    private final ReportFormatter formatter;
 
     public ElectionReport(String rawDataFile, FileParser parser, ReportFormatter formatter) {
         this.rawDataFile = rawDataFile;
