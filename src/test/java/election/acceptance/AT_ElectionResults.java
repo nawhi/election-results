@@ -1,6 +1,7 @@
 package election.acceptance;
 
 import election.ElectionReport;
+import election.parser.FileParser;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -14,7 +15,7 @@ class AT_ElectionResults {
 
     @Test
     void transforms_raw_data_into_formatted_results() {
-        ElectionReport report = new ElectionReport(RAW_DATA_FILE);
+        ElectionReport report = new ElectionReport(RAW_DATA_FILE, new FileParser());
         String data = report.generate();
         assertThat(data, is(FORMATTED_DATA));
     }
