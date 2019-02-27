@@ -1,6 +1,7 @@
 package election;
 
-import election.parser.FileParser;
+import election.builders.ElectionReportBuilder;
+import election.parser.*;
 
 public class ElectionReport {
     private String rawDataFile;
@@ -11,8 +12,13 @@ public class ElectionReport {
         this.parser = parser;
     }
 
+    public static ElectionReport forFile(String absolutePath) {
+        return new ElectionReportBuilder().forDataFile(absolutePath);
+    }
+
     public String generate() {
         parser.parse(rawDataFile);
         return null;
     }
+
 }

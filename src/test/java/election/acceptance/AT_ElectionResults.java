@@ -16,7 +16,7 @@ class AT_ElectionResults {
 
     @Test
     void transforms_raw_data_into_formatted_results() {
-        ElectionReport report = new ElectionReport(RAW_DATA_ABS_PATH, new FileParser(new LineReader(), new ConstituencyResultParser(new VoteBuilder(new InMemoryPartyRepository()))));
+        ElectionReport report = ElectionReport.forFile(RAW_DATA_ABS_PATH);
         String data = report.generate();
         assertThat(data, is(FORMATTED_DATA));
     }
