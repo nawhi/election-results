@@ -10,6 +10,6 @@ public class ElectionReportBuilder {
         var resultParser = new ConstituencyResultParser(voteBuilder);
         var lineReader = new LineReader();
         var parser = new FileParser(lineReader, resultParser);
-        return new ElectionReport(relativePath, parser);
+        return new ElectionReport(relativePath, parser, new election.formatter.ReportFormatter());
     }
 }

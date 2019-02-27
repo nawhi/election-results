@@ -20,4 +20,6 @@ class AT_ElectionResults {
         String data = report.generate();
         assertThat(data, is(FORMATTED_DATA));
     }
+
+
 }
