@@ -10,8 +10,8 @@ import java.util.Map;
 public class InMemoryPartyRepository implements PartyRepository {
 
     private static final Map<String, Party> PARTIES = Map.of(
-            "L", new Party("L", "Labour"),
-            "C", new Party("C", "Conservative"),
+            "L", new Party("L", "Labour Party"),
+            "C", new Party("C", "Conservative Party"),
             "UKIP", new Party("UKIP", "UKIP"),
             "LD", new Party("LD", "Liberal Democrats"),
             "G", new Party("G", "Green Party"),
