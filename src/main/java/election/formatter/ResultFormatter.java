@@ -5,6 +5,7 @@ import election.entities.VoteEntry;
 
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 public class ResultFormatter {
     public String format(ConstituencyResult constituencyResult) {
@@ -18,13 +19,9 @@ public class ResultFormatter {
     }
 
     private String formatVoteList(List<VoteEntry> voteList, int totalVotes) {
-        StringJoiner joiner = new StringJoiner(" || ");
-        voteList.forEach(vote -> {
-                    String partyName = vote.party.displayName();
-                    String votePercentage = getVotePercentage(vote.numVotes, totalVotes);
-                    joiner.add(partyName + " | " + votePercentage);
-                });
-        return joiner.toString();
+        return voteList.stream()
+                .map(vote -> vote.party.displayName() + " | " + getVotePercentage(vote.numVotes, totalVotes))
+                .collect(Collectors.joining(" || "));
     }
 
     private String getVotePercentage(int value, int totalVotes) {
