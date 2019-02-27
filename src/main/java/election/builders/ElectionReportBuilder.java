@@ -1,6 +1,8 @@
 package election.builders;
 
 import election.ElectionReport;
+import election.formatter.ReportFormatter;
+import election.formatter.ResultFormatter;
 import election.parser.*;
 
 public class ElectionReportBuilder {
@@ -8,8 +10,8 @@ public class ElectionReportBuilder {
         var repository = new InMemoryPartyRepository();
         var voteBuilder = new VoteBuilder(repository);
         var resultParser = new ConstituencyResultParser(voteBuilder);
-        var lineReader = new LineReader();
-        var parser = new FileParser(lineReader, resultParser);
-        return new ElectionReport(relativePath, parser, new election.formatter.ReportFormatter());
+        var parser = new FileParser(new LineReader(), resultParser);
+        ReportFormatter formatter = new ReportFormatter(new ResultFormatter());
+        return new ElectionReport(relativePath, parser, formatter);
     }
 }

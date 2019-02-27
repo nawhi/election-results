@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.Map;
 
+import static election.helpers.Parties.*;
 import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -22,8 +23,8 @@ class VoteBuilderShould {
         );
 
         Map<Party, Integer> voteMap = Map.of(
-                Parties.LABOUR, 22547,
-                Parties.CONSERVATIVE, 9389
+                LABOUR, 22547,
+                CONSERVATIVES, 9389
         );
         VoteList expectedVoteList = new VoteList(voteMap);
 
