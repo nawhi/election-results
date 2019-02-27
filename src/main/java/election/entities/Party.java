@@ -11,6 +11,10 @@ public class Party {
         this.displayName = displayName;
     }
 
+    public String displayName() {
+        return displayName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

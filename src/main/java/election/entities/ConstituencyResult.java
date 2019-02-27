@@ -1,10 +1,19 @@
 package election.entities;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class ConstituencyResult {
     private final Constituency constituency;
     private final VoteList votes;
+
+    public String constituencyName() {
+        return constituency.name();
+    }
+
+    public Map<Party, Integer> voteList() {
+        return votes.entries();
+    }
 
     public ConstituencyResult(Constituency constituency, VoteList votes) {
         this.constituency = constituency;

@@ -11,6 +11,10 @@ public class VoteList {
         this.entries = new HashMap<>(entries);
     }
 
+    Map<Party, Integer> entries() {
+        return new HashMap<>(entries);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

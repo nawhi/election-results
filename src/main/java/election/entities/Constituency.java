@@ -3,10 +3,14 @@ package election.entities;
 import java.util.Objects;
 
 public class Constituency {
-    private String name;
+    private final String name;
 
     public Constituency(String name) {
         this.name = name;
+    }
+
+    public String name() {
+        return name;
     }
 
     @Override
