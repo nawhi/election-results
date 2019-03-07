@@ -32,6 +32,10 @@ class ReportFormatterShould {
     }
 
     private List<ConstituencyResult> anything() {
-        return asList(aResult().build(), aResult().build(), aResult().build());
+        return asList(
+                aResult().build(),
+                aResult().build(),
+                aResult().build()
+        );
     }
 }
