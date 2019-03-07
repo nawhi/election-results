@@ -28,9 +28,9 @@ public class ResultFormatter {
     }
 
     private String formatVote(int totalVotes, VoteEntry vote) {
-        return vote.party.displayName()
+        return vote.party().displayName()
                 + VOTE_DELIMITER
-                + getVotePercentage(vote.numVotes, totalVotes);
+                + getVotePercentage(vote.count(), totalVotes);
     }
 
     private String getVotePercentage(int value, int totalVotes) {
@@ -40,7 +40,7 @@ public class ResultFormatter {
     private int calcTotalVotes(List<VoteEntry> voteList) {
         return voteList
                 .stream()
-                .mapToInt(entry -> entry.numVotes)
+                .mapToInt(entry -> entry.count())
                 .sum();
     }
 }
