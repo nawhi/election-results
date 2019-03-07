@@ -8,20 +8,29 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class ResultFormatter {
-    String format(ConstituencyResult constituencyResult) {
-        var voteList = constituencyResult.voteList();
+    private static final String SECTION_DELIMITER = " || ";
+    private static final String VOTE_DELIMITER = " | ";
+
+    String format(ConstituencyResult result) {
+        var voteList = result.voteList();
         int totalVotes = calcTotalVotes(voteList);
 
-        return new StringJoiner(" || ")
-            .add(constituencyResult.constituencyName())
+        return new StringJoiner(SECTION_DELIMITER)
+            .add(result.constituencyName())
             .add(formatVoteList(voteList, totalVotes))
             .toString();
     }
 
     private String formatVoteList(List<VoteEntry> voteList, int totalVotes) {
         return voteList.stream()
-                .map(vote -> vote.party.displayName() + " | " + getVotePercentage(vote.numVotes, totalVotes))
-                .collect(Collectors.joining(" || "));
+                .map(vote -> formatVote(totalVotes, vote))
+                .collect(Collectors.joining(SECTION_DELIMITER));
+    }
+
+    private String formatVote(int totalVotes, VoteEntry vote) {
+        return vote.party.displayName()
+                + VOTE_DELIMITER
+                + getVotePercentage(vote.numVotes, totalVotes);
     }
 
     private String getVotePercentage(int value, int totalVotes) {
