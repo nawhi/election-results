@@ -12,12 +12,12 @@ public class ResultFormatter {
     private static final String VOTE_DELIMITER = " | ";
 
     String format(ConstituencyResult result) {
-        var voteList = result.voteList();
-        int totalVotes = calcTotalVotes(voteList);
+        var voteEntries = result.votes();
+        int totalVotes = calcTotalVotes(voteEntries);
 
         return new StringJoiner(SECTION_DELIMITER)
             .add(result.constituencyName())
-            .add(formatVoteList(voteList, totalVotes))
+            .add(formatVoteList(voteEntries, totalVotes))
             .toString();
     }
 
@@ -37,8 +37,8 @@ public class ResultFormatter {
         return String.format("%.2f%%", 100 * (value / (double) totalVotes));
     }
 
-    private int calcTotalVotes(List<VoteEntry> voteList) {
-        return voteList
+    private int calcTotalVotes(List<VoteEntry> votes) {
+        return votes
                 .stream()
                 .mapToInt(VoteEntry::count)
                 .sum();

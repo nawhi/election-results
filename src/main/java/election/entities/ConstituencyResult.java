@@ -11,7 +11,7 @@ public class ConstituencyResult {
         return constituency.name();
     }
 
-    public List<VoteEntry> voteList() {
+    public List<VoteEntry> votes() {
         return votes.entries();
     }
 
