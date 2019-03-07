@@ -40,7 +40,7 @@ public class ResultFormatter {
     private int calcTotalVotes(List<VoteEntry> voteList) {
         return voteList
                 .stream()
-                .mapToInt(entry -> entry.count())
+                .mapToInt(VoteEntry::count)
                 .sum();
     }
 }
