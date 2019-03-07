@@ -6,6 +6,7 @@ import election.formatter.ResultFormatter;
 import election.parser.*;
 
 public class ElectionReportBuilder {
+
     public ElectionReport forDataFile(String relativePath) {
         var repository = new InMemoryPartyRepository();
         var voteBuilder = new VoteBuilder(repository);

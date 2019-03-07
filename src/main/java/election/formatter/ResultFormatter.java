@@ -8,7 +8,7 @@ import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
 public class ResultFormatter {
-    public String format(ConstituencyResult constituencyResult) {
+    String format(ConstituencyResult constituencyResult) {
         var voteList = constituencyResult.voteList();
         int totalVotes = calcTotalVotes(voteList);
 
