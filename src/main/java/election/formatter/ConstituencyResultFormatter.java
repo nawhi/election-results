@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.StringJoiner;
 import java.util.stream.Collectors;
 
-public class ResultFormatter {
+public class ConstituencyResultFormatter {
     private static final String SECTION_DELIMITER = " || ";
     private static final String VOTE_DELIMITER = " | ";
 

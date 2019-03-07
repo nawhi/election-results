@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReportFormatter {
-    private final ResultFormatter resultFormatter;
+    private final ConstituencyResultFormatter constituencyResultFormatter;
 
-    public ReportFormatter(election.formatter.ResultFormatter resultFormatter) {
-        this.resultFormatter = resultFormatter;
+    public ReportFormatter(ConstituencyResultFormatter constituencyResultFormatter) {
+        this.constituencyResultFormatter = constituencyResultFormatter;
     }
 
     public String format(List<ConstituencyResult> voteList) {
         return voteList.stream()
-                .map(resultFormatter::format)
+                .map(constituencyResultFormatter::format)
                 .collect(Collectors.joining("\n"));
     }
 }

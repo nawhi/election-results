@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class LineReader {
-
     public Stream<String> getLines(String filename) {
         try {
             return Files.readAllLines(Paths.get(filename)).stream();

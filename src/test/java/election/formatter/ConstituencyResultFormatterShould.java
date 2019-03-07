@@ -13,7 +13,7 @@ import static election.helpers.Parties.*;
 import static java.util.Arrays.asList;
 import static org.hamcrest.MatcherAssert.assertThat;
 
-class ResultFormatterShould {
+class ConstituencyResultFormatterShould {
 
     @Test
     void format_result_line_into_string() {
@@ -21,7 +21,7 @@ class ResultFormatterShould {
                 asList(new VoteEntry(UKIP, 500), new VoteEntry(CONSERVATIVES, 300), new VoteEntry(LABOUR, 200)));
         String expectedReportLine = "Thanet South || UKIP | 50.00% || Conservative Party | 30.00% || Labour Party | 20.00%";
 
-        ResultFormatter formatter = new ResultFormatter();
+        ConstituencyResultFormatter formatter = new ConstituencyResultFormatter();
         assertThat(formatter.format(data), CoreMatchers.is(expectedReportLine));
     }
 

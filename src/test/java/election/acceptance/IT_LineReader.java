@@ -26,6 +26,5 @@ class IT_LineReader {
         );
         var lines = new LineReader().getLines(RAW_DATA_ABS_PATH).collect(Collectors.toList());
         assertThat(lines, is(expectedLines));
-
     }
 }
