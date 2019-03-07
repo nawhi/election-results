@@ -1,27 +1,17 @@
 package election;
 
-import election.builders.ElectionReportBuilder;
 import election.formatter.ReportFormatter;
+import election.formatter.ResultFormatter;
 import election.parser.*;
 
 public class ElectionReport {
-    private final String rawDataFile;
-    private final FileParser parser;
-    private final ReportFormatter formatter;
 
-    public ElectionReport(String rawDataFile, FileParser parser, ReportFormatter formatter) {
-        this.rawDataFile = rawDataFile;
-        this.parser = parser;
-        this.formatter = formatter;
+    public static ElectionReportGenerator forDataFile(String relativePath) {
+        var repository = new InMemoryPartyRepository();
+        var voteBuilder = new VoteBuilder(repository);
+        var resultParser = new ConstituencyResultParser(voteBuilder);
+        var parser = new FileParser(new LineReader(), resultParser);
+        ReportFormatter formatter = new ReportFormatter(new ResultFormatter());
+        return new ElectionReportGenerator(relativePath, parser, formatter);
     }
-
-    public static ElectionReport forFile(String absolutePath) {
-        return new ElectionReportBuilder().forDataFile(absolutePath);
-    }
-
-    public String generate() {
-        var results = parser.parse(rawDataFile);
-        return formatter.format(results);
-    }
-
 }

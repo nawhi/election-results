@@ -1,5 +1,6 @@
 package election.acceptance;
 
+import election.ElectionReportGenerator;
 import election.ElectionReport;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +16,7 @@ class AT_ElectionResults {
 
     @Test
     void transforms_raw_data_into_formatted_results() {
-        ElectionReport report = ElectionReport.forFile(RAW_DATA_ABS_PATH);
+        ElectionReportGenerator report = ElectionReport.forDataFile(RAW_DATA_ABS_PATH);
         String data = report.generate();
         assertThat(data, is(FORMATTED_DATA));
     }

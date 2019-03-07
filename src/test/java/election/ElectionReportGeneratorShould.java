@@ -16,7 +16,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
 
-class ElectionReportShould {
+class ElectionReportGeneratorShould {
 
     private ReportFormatter formatter;
     private FileParser parser;
@@ -31,7 +31,7 @@ class ElectionReportShould {
 
     @Test
     void get_file_parsed_into_standard_format() {
-        new ElectionReport(filename, parser, formatter).generate();
+        new ElectionReportGenerator(filename, parser, formatter).generate();
         verify(parser).parse(filename);
     }
 
@@ -44,7 +44,7 @@ class ElectionReportShould {
         when(parser.parse(filename)).thenReturn(result);
         when(formatter.format(result)).thenReturn(expectedReport);
 
-        ElectionReport report = new ElectionReport("whatever", parser, formatter);
+        ElectionReportGenerator report = new ElectionReportGenerator("whatever", parser, formatter);
         String actualReport = report.generate();
 
         verify(parser).parse(filename);
