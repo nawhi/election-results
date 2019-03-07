@@ -1,6 +1,10 @@
 package election.entities;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+import static java.util.Collections.EMPTY_LIST;
 
 public class VoteList {
     private final List<VoteEntry> entries;
@@ -9,7 +13,11 @@ public class VoteList {
         this.entries = entries;
     }
 
-    List<VoteEntry> entries() {
+    public static VoteList empty() {
+        return new VoteList(EMPTY_LIST);
+    }
+
+    public List<VoteEntry> entries() {
         return new ArrayList<>(entries);
     }
 

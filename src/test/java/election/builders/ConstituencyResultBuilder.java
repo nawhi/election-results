@@ -1,10 +1,9 @@
 package election.builders;
 
-import election.entities.Constituency;
-import election.entities.ConstituencyResult;
-import election.entities.VoteEntry;
-import election.entities.VoteList;
+import election.entities.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static election.helpers.Parties.*;
@@ -18,13 +17,34 @@ public class ConstituencyResultBuilder {
     private static final List<VoteEntry> VOTES = asList(VOTE_ENTRY_1, VOTE_ENTRY_2, VOTE_ENTRY_3);
 
     private Constituency constituency = new Constituency("Islington North");
-    private VoteList voteList = new VoteList(VOTES);
+    private VoteList voteList;
 
     public static ConstituencyResultBuilder aResult() {
         return new ConstituencyResultBuilder();
     }
 
     public ConstituencyResult build() {
-        return new ConstituencyResult(constituency, voteList);
+        return new ConstituencyResult(
+                constituency,
+                (voteList == null) ? new VoteList(VOTES) : voteList
+        );
+    }
+
+    public ConstituencyResultBuilder withConstituency(String name) {
+        constituency = new Constituency(name);
+        return this;
+    }
+
+
+    public ConstituencyResultBuilder withVoteEntry(Party party, int numVotes) {
+        VoteEntry entry = new VoteEntry(party, numVotes);
+        if (voteList == null) {
+            voteList = new VoteList(List.of(entry));
+        } else {
+            ArrayList<VoteEntry> entries = new ArrayList<>(voteList.entries());
+            entries.add(entry);
+            voteList = new VoteList(entries);
+        }
+        return this;
     }
 }
