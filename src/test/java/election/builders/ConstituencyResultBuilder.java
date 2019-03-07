@@ -35,7 +35,6 @@ public class ConstituencyResultBuilder {
         return this;
     }
 
-
     public ConstituencyResultBuilder withVoteEntry(Party party, int numVotes) {
         VoteEntry entry = new VoteEntry(party, numVotes);
         if (voteList == null) {
