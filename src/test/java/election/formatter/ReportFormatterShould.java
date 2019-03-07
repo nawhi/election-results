@@ -22,16 +22,16 @@ class ReportFormatterShould {
     }
 
     @Test
-    void call_result_formatter_for_each_line_in_report() {
+    void combine_results_returned_by_result_formatter() {
         when(constituencyResultFormatter.format(any()))
                 .thenReturn("Line 1", "Line 2", "Line 3");
 
-        String actual = new ReportFormatter(constituencyResultFormatter).format(anything());
+        String actual = new ReportFormatter(constituencyResultFormatter).format(threeResults());
 
         assertThat(actual, is("Line 1\nLine 2\nLine 3"));
     }
 
-    private List<ConstituencyResult> anything() {
+    private List<ConstituencyResult> threeResults() {
         return asList(
                 aResult().build(),
                 aResult().build(),
